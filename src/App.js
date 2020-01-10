@@ -1,0 +1,70 @@
+import React from 'react';
+import './App.css';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import ProjectList from './component/ProjectList';
+import AddProject from './component/AddProject';
+import Login from './component/Login';
+import Contact from './component/Contact';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import axios from 'axios';
+
+
+export default class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      authenticated: false,
+      colNum: 'col-4'
+    }
+  }
+
+  handleClick = (username, passphrase) => {
+
+    axios.get(`http://localhost:4000/user/${username}/${passphrase}` ).then(
+      res => {
+        if( res.data === true ){
+          this.setState({
+            authenticated: !this.authenticated
+          })
+        }
+      }
+    )    
+  }
+
+  render () {
+    return (
+      <Router>
+        <div className="container main">
+          <div className="row">
+            <h2 className="text-center primary col-12">Portfolio</h2>
+          </div>
+          <div className="row">
+            <div className="profile secondary col-md-4 col-12">
+              <img className="rounded-circle profile-pic mx-auto" alt="Aaron Jackson" src="img/profile.jpeg"/>
+              <h4 className="text-center primary position-relative profile-text">Aaron Jackson</h4>
+              <p className="text-left position-relative profile-text alternative">Hello, I make websites and web applications.</p>
+              <p className="text-left position-relative profile-text alternative">I enjoy my craft and I'm constantly striving to deliver highly efficient and scalable software solutions.</p>
+              <p className="text-left position-relative profile-text alternative">I invite you to explore some of projects I've worked on throughout my career and see for yourself!</p>
+            </div>
+            <Route path="/" exact component = { ProjectList } />
+            <Route path="/add" component = { AddProject } />
+            <Route path="/login" render = { props => <Login handleClick={this.handleClick}/> } />
+            <Route path="/contact" component = { Contact } />
+
+          </div>
+          <nav className="fixed-bottom navbar navbar-expand-lg navbar-light bg-light">
+            <Link className="col-4" to="/">HOME</Link>
+            {
+              this.state.authenticated ?
+                <Link className="col-4" to="/add">ADD</Link> :
+                <Link  className="col-4" to="/login">LOGIN</Link>
+            }
+            <Link className="col-4" to="/contact">CONTACT</Link>
+          </nav>
+
+        </div>
+
+      </Router>
+    );
+  }  
+}

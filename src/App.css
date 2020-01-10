@@ -1,0 +1,94 @@
+/*
+Colors
+White - #FFFFFF
+Gray  - #A2B5C2
+Black - #00171F
+DARK BLUE  - #003459
+MID BLUE   - #007EA7
+LIGHT BLUE - #00A8E8
+*/
+
+.primary {
+  background-color: #003459;
+  color: #FFFFFF;
+}
+
+.secondary {
+  background-color: #E8E8E8;
+  color: #FFFFFF;
+}
+
+.alternative {
+  color:#00171F;
+}
+
+.profile {
+  height:600px;
+  overflow: scroll;
+}
+
+.profile-pic {
+  height:140px;
+  width:140px;
+  display:block;
+  position:relative;
+  border:4px solid #FFFFFF;
+  top:12px;
+}
+
+.profile-text {
+  top:32px;
+}
+
+.project-list {
+  height:600px;
+}
+
+.project-list table {
+  height:540px;
+  top:24px;
+  text-align:center;
+}
+
+.add {
+  padding:8px;
+  font-weight:700;
+  text-align: right;
+}
+
+.fixed-bottom a {
+  color:#007EA7;
+  font-weight: 600;
+  text-decoration: none !important;
+  transition: color .3s, font-weight .3s;
+  text-align:center;
+}
+
+.fixed-bottom a:hover {
+  color:#00516B;
+  font-weight:700;
+}
+
+form {
+  padding:8px;
+  margin-top:18px;
+  background:#E8E8E8;
+}
+
+.form-group {
+  color:#154263;
+}
+
+#authenticate {
+  margin-top:108px;
+}
+
+th, td {
+  border: 1px solid lightgray !important;
+}
+
+@media screen and (max-width: 600px){
+  .profile {
+    height:420px;
+  }
+}
