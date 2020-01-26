@@ -1,4 +1,5 @@
 require('dotenv').config({path: __dirname + '/.env'})
+const path = require('path');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -89,6 +90,11 @@ projectRoutes.route('/add').post( function(req, res)  {
 
 app.use('/projects', projectRoutes);
 app.use('/user', userRoute);
+
+app.use(express.static("client/build"));
+app.get("*", (req, res) => {
+res.sendFile(path.resolve(__dirname, "../build/", "index.html"));
+});
 
 app.listen(PORT, function(){
     console.log(`Server is running on port: ${PORT}`);
