@@ -5,9 +5,9 @@ export default class AddProject extends Component {
     constructor(props){
         super(props);
         this.state = {
-            name: '',
-            tech: '',
-            link: ''
+            name: this.props.project.name,
+            tech: this.props.project.tech,
+            link: this.props.project.link
         }
     }
 
@@ -44,9 +44,10 @@ export default class AddProject extends Component {
     }
     
     render() {
+        console.log(this.state);
         return (
             <div className="primary col-md-8 col-sm-12 col-12">
-                <h1 className="col-12 text-center p-4">Add Project</h1>
+                <h1 className="col-12 text-center p-4">Edit Project</h1>
                 <form>
                     <div className="form-group rounded">
                         <label htmlFor="name" value="name">Name</label>
@@ -61,7 +62,7 @@ export default class AddProject extends Component {
                         <input onChange={this.onChange} className="form-control" type="text" name="link" id="project-link" />
                     </div>
                     <div className="form-group rounded text-right" id="btn-control">
-                        <button onClick={this.onClick} className="btn btn-primary" value="Add Project" id="project-submit">Add Project</button>
+                        <button onClick={this.onClick} className="btn btn-primary" value="Add Project" id="project-submit">Update</button>
                     </div>
                 </form>
             </div>

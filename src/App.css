@@ -87,8 +87,23 @@ th, td {
   border: 1px solid lightgray !important;
 }
 
-@media screen and (max-width: 600px){
+.success {
+  text-align:center;
+  margin-top:35%;
+}
+
+.contact-box {
+  font-weight:300;
+  height:320px;
+}
+
+
+@media screen and (max-width: 720px){
   .profile {
-    height:420px;
+    height:440px;
+  }
+
+  .project-list {
+    height:540px;
   }
 }
