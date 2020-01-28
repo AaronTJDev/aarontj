@@ -15,6 +15,7 @@ let User = require('./models/User');
 const DB_UN = process.env['DB_USERNAME'];
 const DB_PW = process.env['DB_PASSWORD'];
 
+
 console.log(DB_PW);
 
 app.use(cors());
@@ -93,11 +94,11 @@ projectRoutes.route('/add').post( function(req, res)  {
 app.use('/projects', projectRoutes);
 app.use('/user', userRoute);
 
-app.use(express.static("client/build"));
+app.use(express.static(path.join(__dirname, "../build")));
 app.get("*", (req, res) => {
 res.sendFile(path.resolve(__dirname, "../build/", "index.html"));
 });
 
 app.listen(PORT, function(){
     console.log(`Server is running on port: ${PORT}`);
-});
+}); 
